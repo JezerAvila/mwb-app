@@ -1,0 +1,59 @@
+
+.home-container {
+    display: flex; /* Usa flexbox para alinear los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+  
+  .oso {
+    width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: auto; /* Mantiene la relación de aspecto */
+    margin-right: 15px; /* Espacio entre la imagen y el texto */
+  }
+  
+  .dialogoOso {
+    position: relative; /* Necesario para que el botón se posicione relativo a este contenedor */
+    background-color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Ajusta el ancho máximo del cuadro */
+    position: relative;
+    word-wrap: break-word; /* Hace que el texto salte de línea cuando llega al borde del contenedor */
+    overflow: hidden; /* Evita que el contenido desborde el cuadro */
+  }
+  
+  .dialogoOso::after {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 20px 10px 0;
+    border-color: transparent #f0f0f0 transparent transparent;
+  }
+  
+  /* Animación de parpadeo para la escritura */
+  .dialogoOso p {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: normal; /* Permite que el texto haga saltos de línea */
+    word-wrap: break-word; /* Fuerza al texto a ajustarse si es muy largo */
+    overflow-wrap: break-word; /* Alternativa para ajustar palabras largas */
+    color: white;
+  }
+
+  .dialogoOso button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: none; /* Inicialmente escondido */
+  }
+  
+  .dialogoOso.show-button button {
+    display: block; /* Mostrar el botón cuando esté listo */
+  }
+
+  .ListaPublicadores {
+    padding: 1em;
+  }

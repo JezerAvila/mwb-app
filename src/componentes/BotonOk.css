@@ -1,0 +1,23 @@
+.BotonOk {
+    background-color: #333; /* Color de fondo */
+    color: white; /* Color del texto */
+    border-color: white; /* Sin borde */
+    padding: 5px 5px; /* Espaciado interno */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px; /* Tamaño del texto */
+    margin: 4px 2px;
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    border-radius: 12px; /* Borde redondeado */
+    transition: background-color 0.3s ease; /* Efecto de transición para hover */
+  }
+  
+  .BotonOk:hover {
+    background-color: #ff6347; /* Color de fondo al pasar el cursor */
+  }
+  
+  .BotonOk:focus {
+    outline: none; /* Elimina el borde azul al hacer clic */
+  }
+  

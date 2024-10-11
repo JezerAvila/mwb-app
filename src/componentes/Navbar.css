@@ -1,0 +1,54 @@
+/* Estilo general para la barra de navegación */
+
+/* Custom properties: */
+:root {
+    --primary-color: #333;
+    --hover-color:  #ff6347;  /* tomato color */
+                   /*  #4682b4; */  /* Azul real */
+    --text-color: white;
+    --spacing: 15px;
+  }
+
+
+
+
+
+nav {
+    background-color: #333;  /* Fondo oscuro para la barra */
+    padding: 0.5em;            /* Espaciado interno */
+    text-align: center;       /* Centra el contenido */
+  }
+  
+  /* Estilo para los enlaces dentro de la barra de navegación */
+  nav a {
+    color: white;            /* Color blanco para los enlaces */
+    text-decoration: none;   /* Quitar subrayado */
+    margin: 0 15px;          /* Espaciado horizontal entre los enlaces */
+    font-size: 1.2em;        /* Tamaño de fuente ligeramente más grande */
+    transition: color 0.3s ease; /* Transición suave en el color al hacer hover */
+  }
+  
+  /* Efecto hover para los enlaces */
+  nav a:hover {
+    color: var(--hover-color);         /* Cambia el color del enlace al pasar el mouse */
+  }
+  
+  /* Separador entre los enlaces */
+  nav a:not(:last-child):after {
+    content: '|';           /* Separador de barra entre enlaces */
+    color: white;           /* Mantiene el color blanco */
+    margin-left: 15px;      /* Espaciado a la izquierda del separador */
+  }
+  
+  /* Responsivo: hacer que la barra se ajuste en pantallas pequeñas */
+  @media (max-width: 600px) {
+    nav {
+      padding: 0.5em;
+    }
+  
+    nav a {
+      display: block;       /* Los enlaces ocupan toda la línea en pantallas pequeñas */
+      margin: 10px 0;       /* Espaciado vertical entre enlaces */
+    }
+  }
+  
