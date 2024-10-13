@@ -23,20 +23,6 @@
     border-radius: 4px;
     width: 200px; /* Ancho del campo de entrada */
   }
-  
-  .add-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: var(--primary-color); /* Color verde */
-    color: var(--text-color);
-    cursor: pointer;
-  }
-  
-  .add-button:hover {
-    color: var(--hover-color); /* Color más oscuro al pasar el mouse */
-  }
-
 
   .users-list {
     display: flex;
@@ -67,10 +53,14 @@
     background-color: var(--primary-color); 
     color: var(--text-color);
     cursor: pointer;
+    box-shadow: 2px 2px 0 0 #000;
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   .remove-button:hover {
     color: var(--hover-color); 
+    box-shadow: 1px 1px 0 0 #000;
+    transform: translate(2px, 2px);
   }
   
 
@@ -82,17 +72,21 @@
   }
 
   /* Para el boton de combinaciones: */
-  .generate-button {
+  .generate-button, .add-button {
     padding: 8px 16px;
     background-color: var(--primary-color);
     color: white;
-    border: none;
+    border: 1px solid #18181d;
     border-radius: 4px;
     cursor: pointer;
+    box-shadow: 3px 3px 0 0 #000;
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
-  .generate-button:hover {
-    color: var(--hover-color);
+  .generate-button:hover, .add-button:hover {
+    color: rgba(255, 255, 255, 0.7);
+    box-shadow: 1px 1px 0 0 #000;
+    transform: translate(2px, 2px);
   }
   
   .pairs-list {
@@ -114,7 +108,7 @@
     padding: 5px;
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
-    font-size: larger;
+    font-size:small;
   }
   
 
