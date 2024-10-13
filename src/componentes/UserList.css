@@ -13,6 +13,7 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
+    position: relative; 
   }
   
   .user-input {
@@ -72,3 +73,48 @@
     color: var(--hover-color); 
   }
   
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye el texto y el botón */
+    align-items: center; /* Alinea verticalmente los elementos */
+    margin-top: 20px;
+  }
+
+  /* Para el boton de combinaciones: */
+  .generate-button {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .generate-button:hover {
+    color: var(--hover-color);
+  }
+  
+  .pairs-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos salten a la siguiente fila si no hay más espacio */
+    gap: 10px; /* Añade un espacio entre los elementos */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    max-height: 200px; /* Limita la altura para evitar que se expanda mucho */
+    overflow-y: auto; /* Añade scroll si hay muchas combinaciones */
+    list-style: none; /* Eliminar puntos o viñetas */
+  }
+  
+  .pair-item {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+  }
+  
+
