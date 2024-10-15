@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './BotonSeleccionAleatoria.css';
 
 const BotonSeleccionAleatoria = ({ users, pairs }) => {
   const [arrayNuevo, setArrayNuevo] = useState([]);
@@ -48,12 +49,12 @@ const BotonSeleccionAleatoria = ({ users, pairs }) => {
   };
 
   return (
-    <div>
-      <button onClick={seleccionarParejas}>Seleccionar Parejas Aleatorias</button>
+    <div className='combinaciones'>
+      <button className='combinaciones__boton' onClick={seleccionarParejas}>Seleccionar Parejas Aleatorias</button>
       {mostrar && (
         <div>
-          <h3>Combinaciones Aleatorias</h3>
-          <ul>
+          <h2 className='combinaciones__titulo'>Combinaciones Aleatorias</h2>
+          <ul className='combinaciones__lista'>
             {arrayNuevo.map((item, index) => (
               <li key={index}>
                 {typeof item === 'string' ? item : `${item[0]} y ${item[1]}`}

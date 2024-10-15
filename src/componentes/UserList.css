@@ -64,8 +64,8 @@
   }
   
 
-  .footer-container {
-    display: flex;
+  .footer-container, .footer {
+    display:inline-block;
     justify-content: space-between; /* Distribuye el texto y el botón */
     align-items: center; /* Alinea verticalmente los elementos */
     margin-top: 20px;
@@ -111,4 +111,12 @@
     font-size:small;
   }
   
+  
+  
+  .footer p {
+    margin: 0; /* Elimina el margen por defecto del párrafo */
+    font-size: small; /* Ajusta el tamaño de la fuente si es necesario */
+  }
+  
 
+  

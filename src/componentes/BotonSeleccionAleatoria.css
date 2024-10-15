@@ -1,0 +1,59 @@
+/* Custom properties: */
+:root {
+    --primary-color: #333;
+    --hover-color:  #FFC107;  /* tomato color */
+    --text-color: white;
+    --spacing: 15px;
+  }
+
+
+
+
+.combinaciones {
+
+    padding: 20px 0 0 0;
+    
+  }
+  
+  .combinaciones__boton {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid #18181d;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 0 #000;
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .combinaciones__boton:hover {
+    color: rgba(255, 255, 255, 0.7);
+    box-shadow: 1px 1px 0 0 #000;
+    transform: translate(2px, 2px);
+  }
+  
+
+  
+  .combinaciones__lista {
+    margin-top: 15px;
+    list-style: none; /* Eliminar viñetas */
+    padding: 0;
+    width: 100%;
+    max-width: 400px; /* Ancho máximo de la lista */
+  }
+  
+  .combinaciones__lista li {
+    background-color: #ffffff; /* Fondo blanco para cada item */
+    border: 1px solid #ddd;
+    
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+  
+  .combinaciones__lista li:last-child {
+    margin-bottom: 0; /* Eliminar el margen del último elemento */
+  }
+  

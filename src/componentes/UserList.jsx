@@ -92,16 +92,22 @@ const UserList = () => {
 
 
       {/* Mostrar las combinaciones de parejas en un cuadro de texto */}
-        {pairs.length > 0 ? (
+      {pairs.length > 0 ? (
+        <div>
           <div className="pairs-list"> 
-             {JSON.stringify(pairs, null, 2)}
-            
-             <p>Total de combinaciones: {pairs.length}</p>
-             <BotonSeleccionAleatoria users = {users} pairs = {pairs} />
+            {JSON.stringify(pairs, null, 2)}
           </div>
-        ) : (
-          <p>No hay combinaciones disponibles.</p>
-        )}
+
+          {/* Contenedor del párrafo y el botón */}
+          <div className="footer">
+            <p>Total de combinaciones: {pairs.length}</p>
+            <BotonSeleccionAleatoria users={users} pairs={pairs} />
+          </div>
+        </div>
+      ) : (
+        <p>No hay combinaciones disponibles.</p>
+      )}
+
 
       
       
