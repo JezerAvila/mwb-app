@@ -3,14 +3,10 @@
 /* Custom properties: */
 :root {
     --primary-color: #333;
-    --hover-color:  #ff6347;  /* tomato color */
-                   /*  #4682b4; */  /* Azul real */
+    --hover-color: #FFC107  ; 
     --text-color: white;
     --spacing: 15px;
   }
-
-
-
 
 
 nav {

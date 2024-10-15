@@ -14,7 +14,8 @@
   }
   
   .BotonOk:hover {
-    background-color: #ff6347; /* Color de fondo al pasar el cursor */
+    background-color: #FFC107; /* Color de fondo al pasar el cursor */
+    color: #333;
   }
   
   .BotonOk:focus {

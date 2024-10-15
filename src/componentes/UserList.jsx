@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './UserList.css'; // Asegúrate de importar el archivo CSS para los estilos
+import BotonSeleccionAleatoria from './BotonSeleccionAleatoria';
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -44,11 +45,16 @@ const UserList = () => {
     // Generar todas las combinaciones posibles de dos personas
     for (let i = 0; i < users.length; i++) {
       for (let j = i + 1; j < users.length; j++) {
-        newPairs.push(`${users[i]} - ${users[j]}`);
+        newPairs.push([users[i], users[j]]);
       }
     }
-    setPairs(newPairs); // Actualizar el estado de las combinaciones
+    setPairs(newPairs); // Actualizar el estado de las combinaciones    
   };
+
+ 
+//console.log(users); type array
+//console.log(pairs); type array
+
 
 
   return (
@@ -79,28 +85,25 @@ const UserList = () => {
           {users.length >= 3 && (
             <button
               onClick={generatePairs}  // Llamada directa a la función
-              className="generate-button"
-            >
-              Generar combinaciones
-            </button>
+              className="generate-button">Generar combinaciones</button>
           )}
       </div>
       
 
 
-      {/* Mostrar las combinaciones en un <ul> */}
-      <ul className="pairs-list">
+      {/* Mostrar las combinaciones de parejas en un cuadro de texto */}
         {pairs.length > 0 ? (
-          pairs.map((pair, index) => (
-            <li key={index} className="pair-item">
-              {pair}
-            </li>
-          ))
+          <div className="pairs-list"> 
+             {JSON.stringify(pairs, null, 2)}
+            
+             <p>Total de combinaciones: {pairs.length}</p>
+             <BotonSeleccionAleatoria users = {users} pairs = {pairs} />
+          </div>
         ) : (
           <p>No hay combinaciones disponibles.</p>
         )}
-      </ul>
-      <p>Total de combinaciones: {pairs.length}</p>
+
+      
       
     </div>
   );

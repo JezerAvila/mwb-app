@@ -1,7 +1,7 @@
 /* Custom properties: */
 :root {
     --primary-color: #333;
-    --hover-color:  #ff6347;  /* tomato color */
+    --hover-color:  #FFC107;  /* tomato color */
     --text-color: white;
     --spacing: 15px;
   }
@@ -58,7 +58,7 @@
   }
   
   .remove-button:hover {
-    color: var(--hover-color); 
+    color: red; 
     box-shadow: 1px 1px 0 0 #000;
     transform: translate(2px, 2px);
   }
