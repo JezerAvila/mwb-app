@@ -1,52 +1,45 @@
 import React, { useState } from 'react';
 import './BotonSeleccionAleatoria.css';
 
+
 const BotonSeleccionAleatoria = ({ users, pairs }) => {
   const [arrayNuevo, setArrayNuevo] = useState([]);
   const [mostrar, setMostrar] = useState(false);
 
   const seleccionarParejas = () => {
     let parejasRestantes = [...pairs];
-    const nuevoArray = [];
+    let usuariosDisponibles = new Set(users); // Usar un Set para mejor rendimiento
+    const parejasSeleccionadas = [];
 
-    while (parejasRestantes.length > 0) {
-      let usuariosDisponibles = [...users];
-      const parejasSeleccionadas = [];
+    // Iteramos sobre las parejas restantes hasta que no queden más usuarios disponibles
+    while (usuariosDisponibles.size > 1 && parejasRestantes.length > 0) {
+      const indiceAleatorio = Math.floor(Math.random() * parejasRestantes.length);
+      const pareja = parejasRestantes[indiceAleatorio];
+      const [usuario1, usuario2] = pareja;
 
-      console.log("Usuarios disponibles al inicio del ciclo:", usuariosDisponibles);
-      console.log("Parejas restantes al inicio del ciclo:", parejasRestantes);
-
-      while (usuariosDisponibles.length > 1 && parejasRestantes.length > 0) {
-        const indiceAleatorio = Math.floor(Math.random() * parejasRestantes.length);
-        const pareja = parejasRestantes[indiceAleatorio];
-        const [usuario1, usuario2] = pareja;
-
-        if (usuariosDisponibles.includes(usuario1) && usuariosDisponibles.includes(usuario2)) {
-          parejasSeleccionadas.push(pareja);
-          usuariosDisponibles = usuariosDisponibles.filter(u => u !== usuario1 && u !== usuario2);
-          parejasRestantes = parejasRestantes.filter(p => !(p[0] === usuario1 && p[1] === usuario2));
-          console.log("Pareja seleccionada:", pareja);
-        }
+      // Verificamos si ambos usuarios están disponibles en el set
+      if (usuariosDisponibles.has(usuario1) && usuariosDisponibles.has(usuario2)) {
+        parejasSeleccionadas.push(pareja);
+        usuariosDisponibles.delete(usuario1); // Eliminar usuarios del Set
+        usuariosDisponibles.delete(usuario2);
+        parejasRestantes.splice(indiceAleatorio, 1); // Eliminar la pareja seleccionada de las restantes
       }
-
-      if (usuariosDisponibles.length === 1) {
-        parejasSeleccionadas.push(`falto: ${usuariosDisponibles[0]}`);
-      }
-
-      if (parejasSeleccionadas.length > 0) {
-        nuevoArray.push(...parejasSeleccionadas);
-        if (parejasRestantes.length > 0) {
-          nuevoArray.push('/');
-        }
-      }
-
-      console.log("Parejas seleccionadas en este ciclo:", parejasSeleccionadas);
     }
 
-    console.log("Array final de parejas seleccionadas:", nuevoArray);
-    setArrayNuevo(nuevoArray);
+    // Si queda un usuario disponible sin pareja
+    if (usuariosDisponibles.size === 1) {
+      const usuarioSobrante = Array.from(usuariosDisponibles)[0];
+      parejasSeleccionadas.push(`Faltó: ${usuarioSobrante}`);
+    }
+
+    // Actualizamos el estado con las nuevas parejas seleccionadas
+    setArrayNuevo(parejasSeleccionadas);
     setMostrar(true);
   };
+
+  //se marcaran las parejas en la lista de combinaciones y se borraran de la seleccion aunque sigan desplegandose
+  const UsarParejas = () => {};
+
 
   return (
     <div className='combinaciones'>
@@ -61,6 +54,7 @@ const BotonSeleccionAleatoria = ({ users, pairs }) => {
               </li>
             ))}
           </ul>
+          <button className='combinaciones__usar' onClick={UsarParejas}>Usar Parejas</button>
         </div>
       )}
     </div>

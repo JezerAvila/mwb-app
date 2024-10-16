@@ -10,7 +10,6 @@ const UserList = () => {
   // Cargar usuarios desde localStorage cuando el componente se monta
   useEffect(() => {
     const storedUsers = localStorage.getItem('users');
-    //console.log('Cargando desde localStorage:', storedUsers);  // Debug
     if (storedUsers) {
       setUsers(JSON.parse(storedUsers));
     }
@@ -19,11 +18,9 @@ const UserList = () => {
   // Guardar usuarios en localStorage cada vez que cambien
   useEffect(() => {
     if (users.length > 0) {  // Solo guardar si hay usuarios
-      //console.log('Guardando en localStorage:', users);  // Debug
       localStorage.setItem('users', JSON.stringify(users));
     }
   }, [users]);
-
 
   const addUser = () => {
     if (user.trim()) {  // Verificar que no esté vacío
@@ -38,7 +35,6 @@ const UserList = () => {
     setUsers(newUsers);
   };
 
-
   // Función para generar las combinaciones de parejas
   const generatePairs = () => {
     const newPairs = [];
@@ -48,14 +44,23 @@ const UserList = () => {
         newPairs.push([users[i], users[j]]);
       }
     }
-    setPairs(newPairs); // Actualizar el estado de las combinaciones    
+    setPairs(newPairs); // Actualizar el estado de las combinaciones
   };
 
- 
-//console.log(users); type array
-//console.log(pairs); type array
+  // Guardar combinaciones en localStorage cada vez que cambien
+  useEffect(() => {
+    if (pairs.length > 0) {  // Solo guardar si hay combinaciones
+      localStorage.setItem('pairs', JSON.stringify(pairs));
+    }
+  }, [pairs]);
 
-
+  // Cargar combinaciones desde localStorage cuando el componente se monta
+  useEffect(() => {
+    const storedPairs = localStorage.getItem('pairs');
+    if (storedPairs) {
+      setPairs(JSON.parse(storedPairs));
+    }
+  }, []);
 
   return (
     <div className="user-list-container">
@@ -76,20 +81,16 @@ const UserList = () => {
         ))}
       </ul>
 
-      
-
       <div className="footer-container">
-          <p>Total de publicadores: {users.length}</p>
+        <p>Total de publicadores: {users.length}</p>
 
-          {/* Mostrar el botón de generar combinaciones solo si hay más de 3 usuarios */}
-          {users.length >= 3 && (
-            <button
-              onClick={generatePairs}  // Llamada directa a la función
-              className="generate-button">Generar combinaciones</button>
-          )}
+        {/* Mostrar el botón de generar combinaciones solo si hay más de 3 usuarios */}
+        {users.length >= 3 && (
+          <button
+            onClick={generatePairs}  // Llamada directa a la función
+            className="generate-button">Generar Combinaciones</button>
+        )}
       </div>
-      
-
 
       {/* Mostrar las combinaciones de parejas en un cuadro de texto */}
       {pairs.length > 0 ? (
@@ -107,10 +108,6 @@ const UserList = () => {
       ) : (
         <p>No hay combinaciones disponibles.</p>
       )}
-
-
-      
-      
     </div>
   );
 };

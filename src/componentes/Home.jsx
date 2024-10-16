@@ -12,6 +12,14 @@ const Home = () => {
     "Las parejas seleccionadas aleatoriamente no repiten usuarios y alternan entre Responsable y Ayudante.",
     "Puedes imprimir esta información para irla marcando conforme la utilices.",
     "Que Jah siga bendiciendo tus esfuerzos por servir a tus hermanos."
+
+    // Sí, si el usuario elige "Eliminar datos de navegación" y selecciona la opción de borrar "Datos de sitios" o "Almacenamiento local", esto eliminará los datos guardados en localStorage. Al borrar los datos de navegación, los navegadores suelen ofrecer opciones como:
+    // Historial de navegación.
+    // Cookies y otros datos del sitio.
+    // Imágenes y archivos en caché.
+    // Datos del almacenamiento local (incluye localStorage y sessionStorage).
+    // Si el usuario selecciona eliminar Cookies y otros datos del sitio o Almacenamiento local, toda la información almacenada en localStorage será borrada.
+
   ];
 
   const [displayText, setDisplayText] = useState('');
