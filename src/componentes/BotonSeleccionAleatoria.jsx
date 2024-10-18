@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import './BotonSeleccionAleatoria.css';
 
 
-export default function BotonSeleccionAleatoria ({ users, pairs }) {
+export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, parejasUsadas }) {
   const [arrayNuevo, setArrayNuevo] = useState([]);
   const [mostrar, setMostrar] = useState(false);
+  
 
   const seleccionarParejas = () => {
     let parejasRestantes = [...pairs];
@@ -39,12 +40,15 @@ export default function BotonSeleccionAleatoria ({ users, pairs }) {
 
 
   const UsarParejas = () => {
-
-      //se marcaran las parejas en la lista de combinaciones y se borraran de la seleccion aunque sigan desplegandose
-  //esto se puede lograr comparando 'pairs' con 'parejasRestantes' las diferencias se marcaran de gris con raya enmedio en el desplegado
-
+    onUsarParejas(arrayNuevo);  // Notificar al componente padre
+    setArrayNuevo([]);  // Limpiar el array de parejas seleccionadas
   };
 
+  const esParejaUsada = (pareja) => {
+    return parejasUsadas.some(
+      (parejaUsada) => parejaUsada[0] === pareja[0] && parejaUsada[1] === pareja[1]
+    );
+  };
 
   return (
 
@@ -58,8 +62,8 @@ export default function BotonSeleccionAleatoria ({ users, pairs }) {
           <ul className='combinaciones__lista'>
             {arrayNuevo.map((item, index) => (
               <li key={index}>
-                {typeof item === 'string' ? item : `${item[0]} y ${item[1]}`}
-              </li>
+              {typeof item === 'string' ? item : `${item[0]} y ${item[1]}`}
+            </li>
             ))}
           </ul>
           <button className='combinaciones__usar' onClick={UsarParejas}>Usar Parejas</button>

@@ -6,6 +6,11 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState('');
   const [pairs, setPairs] = useState([]);  // Estado para las combinaciones
+  const [parejasUsadas, setParejasUsadas] = useState([]);  // Nuevo estado para las parejas usadas
+
+  const usarParejas = (nuevasParejas) => {
+    setParejasUsadas(prev => [...prev, ...nuevasParejas]); // Agregar las nuevas parejas usadas
+};
 
   // Cargar usuarios desde localStorage cuando el componente se monta
   useEffect(() => {
@@ -62,6 +67,11 @@ const UserList = () => {
     }
   }, []);
 
+    // Manejar las parejas usadas
+    const handleUsarParejas = (parejasSeleccionadas) => {
+      setParejasUsadas([...parejasUsadas, ...parejasSeleccionadas]);  // Agregar parejas seleccionadas a las usadas
+    };
+
   return (
     <div className="user-list-container">
       <input
@@ -96,20 +106,37 @@ const UserList = () => {
       {pairs.length > 0 ? (
         <div>
           <div className="pairs-list"> 
-            {JSON.stringify(pairs, null, 2)}
+              {/* {JSON.stringify(pairs, null, 2)} */}
+              {pairs.map((pair, index) => (
+          <div
+              key={index}
+              className={parejasUsadas.some(
+                p => p[0] === pair[0] && p[1] === pair[1]
+              ) ? 'pareja-usada' : ''}  // Se agrega la clase 'pareja-usada' si la pareja está en 'parejasUsadas'
+          >
+            {pair[0]} y {pair[1]}
           </div>
+      ))}
+    </div>
+
+
 
           {/* Contenedor del párrafo y el botón */}
           <div className="footer">
             <p>Total de combinaciones: {pairs.length}</p>
-            <BotonSeleccionAleatoria users={users} pairs={pairs} />
+            <BotonSeleccionAleatoria 
+            users={users} 
+            pairs={pairs} 
+            onUsarParejas={usarParejas} 
+            parejasUsadas={parejasUsadas} // Pasa el estado de parejas usadas
+            />
           </div>
         </div>
       ) : (
         <p>No hay combinaciones disponibles.</p>
       )}
     </div>
-  );
+  )
 };
 
 export default UserList;
