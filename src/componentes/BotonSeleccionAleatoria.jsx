@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './BotonSeleccionAleatoria.css';
 
 
-const BotonSeleccionAleatoria = ({ users, pairs }) => {
+export default function BotonSeleccionAleatoria ({ users, pairs }) {
   const [arrayNuevo, setArrayNuevo] = useState([]);
   const [mostrar, setMostrar] = useState(false);
 
@@ -37,11 +37,19 @@ const BotonSeleccionAleatoria = ({ users, pairs }) => {
     setMostrar(true);
   };
 
-  //se marcaran las parejas en la lista de combinaciones y se borraran de la seleccion aunque sigan desplegandose
-  const UsarParejas = () => {};
+
+  const UsarParejas = () => {
+
+      //se marcaran las parejas en la lista de combinaciones y se borraran de la seleccion aunque sigan desplegandose
+  //esto se puede lograr comparando 'pairs' con 'parejasRestantes' las diferencias se marcaran de gris con raya enmedio en el desplegado
+
+  };
 
 
   return (
+
+   
+
     <div className='combinaciones'>
       <button className='combinaciones__boton' onClick={seleccionarParejas}>Seleccionar Parejas Aleatorias</button>
       {mostrar && (
@@ -58,7 +66,7 @@ const BotonSeleccionAleatoria = ({ users, pairs }) => {
         </div>
       )}
     </div>
-  );
+  )
 };
 
-export default BotonSeleccionAleatoria;
+
