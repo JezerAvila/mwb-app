@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React,  { useState, useEffect } from 'react';
 import './BotonSeleccionAleatoria.css';
 
 
 export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, parejasUsadas }) {
   const [arrayNuevo, setArrayNuevo] = useState([]);
   const [mostrar, setMostrar] = useState(false);
+
+  //Recuperar las parejas usadas al cargar la página
+  useEffect(() => {
+    const parejasUsadasGuardadas = JSON.parse(localStorage.getItem('parejasUsadas')) || [];
+    onUsarParejas(parejasUsadasGuardadas);  // Recuperar parejas usadas del localStorage al cargar
+  }, []); // El array vacío asegura que solo se ejecute una vez al montar el componente
   
 
-  const seleccionarParejas = () => {
-    let parejasRestantes = [...pairs];
-    let usuariosDisponibles = new Set(users); // Usar un Set para mejor rendimiento
+    const seleccionarParejas = () => {
+    // Copiamos las parejas restantes pero filtramos aquellas que ya han sido usadas
+    let parejasRestantes = pairs.filter((pareja) => !esParejaUsada(pareja));
+    
+    let usuariosDisponibles = new Set(users);
     const parejasSeleccionadas = [];
 
     // Iteramos sobre las parejas restantes hasta que no queden más usuarios disponibles
@@ -40,6 +48,12 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
 
 
   const UsarParejas = () => {
+    const parejasUsadasPrevias = JSON.parse(localStorage.getItem('parejasUsadas')) || [];
+    const nuevasParejasUsadas = [...parejasUsadasPrevias, ...arrayNuevo];
+  
+    // Guardar las nuevas parejas usadas en el localStorage
+    localStorage.setItem('parejasUsadas', JSON.stringify(nuevasParejasUsadas));
+
     onUsarParejas(arrayNuevo);  // Notificar al componente padre
     setArrayNuevo([]);  // Limpiar el array de parejas seleccionadas
   };
@@ -61,7 +75,7 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
           <h2 className='combinaciones__titulo'>Combinaciones Aleatorias</h2>
           <ul className='combinaciones__lista'>
             {arrayNuevo.map((item, index) => (
-              <li key={index}>
+              <li key={index} className={esParejaUsada(item) ? 'pareja-usada' : ''}>
               {typeof item === 'string' ? item : `${item[0]} y ${item[1]}`}
             </li>
             ))}

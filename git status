@@ -1,0 +1,59 @@
+[33mcommit 7d460632ac80ea446c9fee18c682d61466dbf1b6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Thu Oct 17 20:27:55 2024 -0600
+
+    marca las parejas usadas pero falta guardarlas en localstorage
+
+[33mcommit 8a7ff55a929e3253edcaf1b1280d9b92b384a2fc[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Thu Oct 17 19:45:29 2024 -0600
+
+    codigo antes de implementar 'UsarParejas'
+
+[33mcommit 7fe723718e162c9699f226024b00cca7d4717f48[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Tue Oct 15 18:44:32 2024 -0600
+
+    seleccionaremos parejas aleatorias poco a poco par no sobrecargar la logica evitando usar  whiles anidados
+
+[33mcommit 470fe5caa18d5701d95c7c7123c2ace11f0aee80[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Tue Oct 15 15:11:26 2024 -0600
+
+    funciona bien para pocos usuarios pero inestrable con varios
+
+[33mcommit ee7e5bd56c354993103fca6a3965e553deda04c0[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Mon Oct 14 23:08:05 2024 -0600
+
+    seleccion aleatoria de parejas
+
+[33mcommit 8712293b04649403d8b58fd14a3845fa2fd713ba[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Sat Oct 12 22:36:52 2024 -0600
+
+    estilo de botones
+
+[33mcommit 350af7d5292697acbaf8f5dcac9448c659d76a35[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Sat Oct 12 19:59:59 2024 -0600
+
+    Generacion de combinaciones completa
+
+[33mcommit 228fd86ab10483502c441111d28cbfc6b2820b6a[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Thu Oct 10 18:41:43 2024 -0600
+
+    cuadro de dialogo y lista de publicadores
+
+[33mcommit 1b133b948c7d884d20725162664ad5ac814e85c8[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Tue Oct 8 22:00:30 2024 -0600
+
+    primer Router
+
+[33mcommit d851cbaf1974f837185bb576726af2b905211e6c[m
+Author: Jezer Avila <jezeravila@gmail.com>
+Date:   Tue Oct 8 18:23:22 2024 -0600
+
+    Initialize project using Create React App

@@ -57,7 +57,7 @@ const UserList = () => {
     if (pairs.length > 0) {  // Solo guardar si hay combinaciones
       localStorage.setItem('pairs', JSON.stringify(pairs));
     }
-  }, [pairs]);
+  }, []);  //antes [pairs]
 
   // Cargar combinaciones desde localStorage cuando el componente se monta
   useEffect(() => {
