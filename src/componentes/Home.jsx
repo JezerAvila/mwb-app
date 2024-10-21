@@ -5,12 +5,12 @@ import BotonOk from './BotonOk';
 
 const Home = () => {
   const texts = [
-    "Esta página no guarda información de los usuarios, no necesitas crear una cuenta, es gratuita y fácil de usar.",
+    "Esta pagina es gratuita, fácil de usar y no necesitas crear una cuenta.",
     "Esta app te ayudará a crear el programa para la reunión de vida y ministerio cristiano, al generar parejas aleatorias a partir de los nombres de los publicadores.",
     "Empieza introduciendo los nombres de los publicadores, cuando termines da clic en el botón 'Generar combinaciones'.",
-    "Ahora que tienes todas las posibles combinaciones de parejas, puedes dar clic en el botón 'Seleccionar Aleatoria' para seleccionarlas parejas aleatoriamente para incluirlas en tu programa.",
-    "Las parejas seleccionadas aleatoriamente no repiten usuarios y alternan entre Responsable y Ayudante.",
-    "Puedes imprimir esta información para irla marcando conforme la utilices.",
+    "Ahora que tienes todas las posibles combinaciones de parejas, puedes dar clic en el botón 'Seleccionar Parejas Aleatorias' para seleccionar parejas al azar que puedas usar en tu programa de asignaciones.",
+    "Las parejas seleccionadas no repiten usuarios y alternan entre Responsables y Ayudantes.",
+    "La informacion registrada se guarda en tu navegador local (localStorage) por lo que estara disponible para uso futuro en tu equipo y la puedes eliminar con el boton 'Limpiar Datos'.",
     "Que Jah siga bendiciendo tus esfuerzos por servir a tus hermanos."
 
     // Sí, si el usuario elige "Eliminar datos de navegación" y selecciona la opción de borrar "Datos de sitios" o "Almacenamiento local", esto eliminará los datos guardados en localStorage. Al borrar los datos de navegación, los navegadores suelen ofrecer opciones como:
