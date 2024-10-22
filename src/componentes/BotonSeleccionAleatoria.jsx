@@ -1,5 +1,7 @@
 import React,  { useState, useEffect } from 'react';
 import './BotonSeleccionAleatoria.css';
+import Swal from 'sweetalert2'; 
+
 
 
 export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, parejasUsadas }) {
@@ -64,22 +66,39 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
     );
   };
 
+
+
+
+
+
+
+
   //Esta función se encargará de limpiar el localStorage 
   const limpiarDatos = () => {
-    // Limpiar todos los datos del localStorage
+    // Eliminar todos los datos del localStorage
     localStorage.clear();
   
-    // También puedes limpiar cualquier estado relacionado
-    setArrayNuevo([]);  // Si necesitas limpiar las parejas seleccionadas, por ejemplo
-    onUsarParejas([]);  // Si deseas notificar al padre que no hay más parejas usadas
-  
-    // Si tienes otros estados o funcionalidades que dependen de los datos del localStorage,
-    // también deberías actualizarlos aquí.
-    alert('Todos los datos han sido eliminados.');
-
-    // Recargar la página automáticamente para reflejar los cambios
-  window.location.reload();
+    // Mostrar SweetAlert2 en lugar del alert tradicional
+    Swal.fire({
+      title: 'Datos eliminados',
+      text: 'Todos los datos han sido eliminados correctamente.',
+      icon: 'success',  // Icono de éxito ('warning', 'error', 'info', 'success')
+      confirmButtonText: 'OK',
+      background: '#f9f9f9',
+      confirmButtonColor: '#3085d6',
+      imageUrl: '/datosBorrados.jpg',  // Desde la carpeta public
+      imageWidth: 100,
+      imageHeight: 100,
+      imageAlt: 'Imagen de eliminación',
+    }).then(() => {
+      // También puedes limpiar cualquier estado relacionado
+      setArrayNuevo([]);  // Si necesitas limpiar las parejas seleccionadas, por ejemplo
+      onUsarParejas([]);  // Si deseas notificar al padre que no hay más parejas usadas
+      // Recargar la página después de que el usuario cierre la alerta
+      window.location.reload();
+    });
   };
+
   
 
   return (
