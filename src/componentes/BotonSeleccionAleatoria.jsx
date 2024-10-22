@@ -67,12 +67,6 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
   };
 
 
-
-
-
-
-
-
   //Esta función se encargará de limpiar el localStorage 
   const limpiarDatos = () => {
     // Eliminar todos los datos del localStorage
@@ -114,8 +108,14 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
           <ul className='combinaciones__lista'>
             {arrayNuevo.map((item, index) => (
               <li key={index} className={esParejaUsada(item) ? 'pareja-usada' : ''}>
-              {typeof item === 'string' ? item : `${item[0]} y ${item[1]}`}
-            </li>
+                  {typeof item === 'string' ? (
+                  item
+                  ) : (
+                    <>
+                      <span className="usuario1">{item[0]}</span> y <span className="usuario2">{item[1]}</span>
+                    </>
+                )}
+              </li>
             ))}
           </ul>
           <button className='combinaciones__usar' onClick={UsarParejas}>Usar Parejas</button>

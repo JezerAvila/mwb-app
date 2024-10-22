@@ -57,6 +57,15 @@
     margin-bottom: 0; /* Eliminar el margen del último elemento */
   }
   
+
+  .usuario1 {
+    color: green; /* Verde para usuario1 */
+  }
+  
+  .usuario2 {
+    color:maroon; /* Naranja para usuario2 */
+  }
+
   .pareja-usada {
     color: gray;
     text-decoration: line-through;
