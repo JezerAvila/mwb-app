@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './componentes/Navbar';
 import Home from './componentes/Home';
 import AboutMe from './componentes/AboutMe';
-import Donate from './componentes/Donate';
+import Suggestions from './componentes/Suggestions';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/AboutMe" element={<AboutMe />} />
-          <Route path="/Donate" element={<Donate />} />
+          <Route path="/Suggestions" element={<Suggestions />} />
         </Routes>
     </Router>
   );

@@ -64,12 +64,31 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
     );
   };
 
+  //Esta función se encargará de limpiar el localStorage 
+  const limpiarDatos = () => {
+    // Limpiar todos los datos del localStorage
+    localStorage.clear();
+  
+    // También puedes limpiar cualquier estado relacionado
+    setArrayNuevo([]);  // Si necesitas limpiar las parejas seleccionadas, por ejemplo
+    onUsarParejas([]);  // Si deseas notificar al padre que no hay más parejas usadas
+  
+    // Si tienes otros estados o funcionalidades que dependen de los datos del localStorage,
+    // también deberías actualizarlos aquí.
+    alert('Todos los datos han sido eliminados.');
+
+    // Recargar la página automáticamente para reflejar los cambios
+  window.location.reload();
+  };
+  
+
   return (
 
    
 
     <div className='combinaciones'>
       <button className='combinaciones__boton' onClick={seleccionarParejas}>Seleccionar Parejas Aleatorias</button>
+      <button className='combinaciones__boton' onClick={limpiarDatos}>Limpiar Datos</button>
       {mostrar && (
         <div>
           <h2 className='combinaciones__titulo'>Combinaciones Aleatorias</h2>

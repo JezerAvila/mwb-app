@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Donate = () => {
+const Suggestions = () => {
   return (
     <div>
-      <h1>Donate</h1>
+      <h1>Suggestions</h1>
       <p>Support us by donating!</p>
     </div>
   );
 }
 
-export default Donate;
+export default Suggestions;
