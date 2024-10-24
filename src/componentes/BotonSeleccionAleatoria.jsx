@@ -7,11 +7,16 @@ import Swal from 'sweetalert2';
 export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, parejasUsadas }) {
   const [arrayNuevo, setArrayNuevo] = useState([]);
   const [mostrar, setMostrar] = useState(false);
+  const [responsablesPrevios, setResponsablesPrevios] = useState([]); // Responsables de la selección anterior
+  const [parejasInvertidas, setParejasInvertidas] = useState({}); // Estado para controlar si una pareja está invertida visualmente
 
-  //Recuperar las parejas usadas al cargar la página
+
+  // Recuperar las parejas y responsables usados al cargar la página
   useEffect(() => {
     const parejasUsadasGuardadas = JSON.parse(localStorage.getItem('parejasUsadas')) || [];
+    const responsablesGuardados = JSON.parse(localStorage.getItem('responsablesPrevios')) || [];
     onUsarParejas(parejasUsadasGuardadas);  // Recuperar parejas usadas del localStorage al cargar
+    setResponsablesPrevios(responsablesGuardados);  // Recuperamos los responsables previos del localStorage
   }, []); // El array vacío asegura que solo se ejecute una vez al montar el componente
   
 
@@ -50,20 +55,43 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
 
 
   const UsarParejas = () => {
+  
     const parejasUsadasPrevias = JSON.parse(localStorage.getItem('parejasUsadas')) || [];
     const nuevasParejasUsadas = [...parejasUsadasPrevias, ...arrayNuevo];
   
     // Guardar las nuevas parejas usadas en el localStorage
     localStorage.setItem('parejasUsadas', JSON.stringify(nuevasParejasUsadas));
 
+    // Determinar responsables según las parejas seleccionadas (teniendo en cuenta la inversión visual)
+    const nuevosResponsables = arrayNuevo.map((pareja, index) =>
+      parejasInvertidas[index] ? pareja[1] : pareja[0] // Tomar al primer miembro de la pareja, o al segundo si está invertido
+    );
+
+    // Solo almacenar los responsables de la última selección
+    setResponsablesPrevios(nuevosResponsables);
+  
+    localStorage.setItem('responsablesPrevios', JSON.stringify(nuevosResponsables));
+
     onUsarParejas(arrayNuevo);  // Notificar al componente padre
     setArrayNuevo([]);  // Limpiar el array de parejas seleccionadas
   };
 
+
   const esParejaUsada = (pareja) => {
     return parejasUsadas.some(
-      (parejaUsada) => parejaUsada[0] === pareja[0] && parejaUsada[1] === pareja[1]
+      (parejaUsada) => 
+        (parejaUsada[0] === pareja[0] && parejaUsada[1] === pareja[1]) ||
+        (parejaUsada[0] === pareja[1] && parejaUsada[1] === pareja[0]) // También considera el orden invertido
     );
+  };
+
+
+  // Función para invertir el orden visual de la pareja
+  const invertirPareja = (index) => {
+    setParejasInvertidas((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index]  // Alternar entre invertido y no invertido
+    }));
   };
 
 
@@ -86,10 +114,10 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
       imageAlt: 'Imagen de eliminación',
     }).then(() => {
       // También puedes limpiar cualquier estado relacionado
-      setArrayNuevo([]);  // Si necesitas limpiar las parejas seleccionadas, por ejemplo
-      onUsarParejas([]);  // Si deseas notificar al padre que no hay más parejas usadas
-      // Recargar la página después de que el usuario cierre la alerta
-      window.location.reload();
+      setArrayNuevo([]);  // Limpiar parejas seleccionadas
+      setResponsablesPrevios([]);  // Limpiar responsables
+      onUsarParejas([]);  // Notificar al padre que no hay parejas usadas
+      window.location.reload(); // Recargar la página después de que el usuario cierre la alerta
     });
   };
 
@@ -112,15 +140,40 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
                   item
                   ) : (
                     <>
-                      <span className="usuario1">{item[0]}</span> y <span className="usuario2">{item[1]}</span>
+                          <span className="usuario1">
+                            {parejasInvertidas[index] ? item[1] : item[0]}
+                          </span>
+                          y
+                          <span className="usuario2">
+                            {parejasInvertidas[index] ? item[0] : item[1]}
+                          </span>
+                          <button onClick={() => invertirPareja(index)}>
+                            Invertir Orden
+                          </button>
                     </>
                 )}
               </li>
             ))}
           </ul>
+          
+                    {/* Sección para mostrar los responsables de la selección anterior */}
+                {responsablesPrevios.length > 0 && (
+                  <div className='responsables__contenedor'>
+                    <h3>Responsables en la selección anterior:</h3>
+                    <ul className='responsables__lista'>
+                      {responsablesPrevios.map((responsable, index) => (
+                        <li key={index}>{responsable}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+       
+
           <button className='combinaciones__usar' onClick={UsarParejas}>Usar Parejas</button>
         </div>
       )}
+
     </div>
   )
 };
