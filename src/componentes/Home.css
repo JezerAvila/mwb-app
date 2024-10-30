@@ -1,5 +1,5 @@
 
-.home-container {
+.home-container    {
     display: flex; /* Usa flexbox para alinear los elementos */
     align-items: center; /* Centra verticalmente los elementos */
   }

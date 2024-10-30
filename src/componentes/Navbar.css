@@ -2,9 +2,11 @@
 
 /* Custom properties: */
 :root {
-    --primary-color: #333;
+    --fondo-darkmode: #333;
+    --text-color-darkmode: white;
+    --fondo-lightmode: #333;
+    --text-color-lightmode: white;
     --hover-color: #FFC107  ; 
-    --text-color: white;
     --spacing: 15px;
   }
 
@@ -48,3 +50,85 @@ nav {
     }
   }
   
+
+/*   .navbar-light {
+    background-color: white;
+    color: black;
+  }
+  
+  .navbar-dark {
+    background-color: var(--fondo-darkmode);
+    color: var(--text-color-darkmode);
+  }
+  
+  .toggle-theme-btn {
+    margin-left: 10px;
+    cursor: pointer;
+  } */
+
+  /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  
+}
+
+/* Estilo para el círculo dentro del slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--fondo-darkmode);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+input:checked + .slider {
+  background-color: #697477;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #697477;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+  background-color: white; /* Cambia el color del círculo a blanco al activarse */
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
