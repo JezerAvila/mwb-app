@@ -2,10 +2,19 @@ import React, { useState, useEffect } from 'react';
 import UsersList from './UserList';
 import './Home.css';
 import BotonOk from './BotonOk';
-import { useTheme } from './ThemeContext'; // Paso 1: Importar el contexto
+import { useTheme } from './ThemeContext'; 
 
 const Home = () => {
+
   const { isDarkMode } = useTheme();
+  useEffect(() => {
+    document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+  }, [isDarkMode]);
+
+
+
+
+
   const texts = [
     "Esta pagina es gratuita, fácil de usar y no necesitas crear una cuenta.",
     "Esta app te ayudará a crear el programa para la reunión de vida y ministerio cristiano, al generar parejas aleatorias a partir de los nombres de los publicadores.",
@@ -54,8 +63,12 @@ const Home = () => {
   return (
     <div>
       <br />
-      <div className="home-container"> {/* ={isDarkMode ? 'home-container-dark' : 'home-container-light'} */}
-        <img className="oso" src="/BearIcon.png" alt="icono" />
+      <div className= "home-container">
+          <img
+          className="oso"
+          src={isDarkMode ? '/BearIconDark.png' : '/BearIcon.png'}
+          alt="icono"
+          />
         <div className={`dialogoOso ${isTypingComplete ? 'show-button' : ''}`}>
           <p>
             {displayText}

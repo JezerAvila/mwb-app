@@ -4,24 +4,47 @@
     --hover-color:  #FFC107;  /* tomato color */
     --text-color: white;
     --spacing: 15px;
+    --color-background-light: #f9f9f9;
+    --color-background-dark: #000000;  /* #697477 */
+
+    
   }
 
 
-.user-list-container {
+.user-list-container-dark {
     margin: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: var(--primary-color);
+    color: var(--color-background-dark);
+    position: relative; 
+  }
+
+.user-list-container-light {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: var(--color-background-light);
     position: relative; 
   }
   
-  .user-input {
+  .user-input-dark {
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 200px; /* Ancho del campo de entrada */
+    background-color: var(--primary-color);
+  }
+  .user-input-light {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px; /* Ancho del campo de entrada */
+    background-color: var(--color-background-light);
   }
 
   .users-list {
@@ -30,14 +53,26 @@
     gap: 10px; /* Añade un espacio entre los elementos */
   }
   
-  .user-item {
+  .user-item-dark {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
     font-size: larger;
     padding: 5px;
     border: 1px solid white;
     border-radius: 4px;
-    background-color: #ffffff;
+    background-color: var(--primary-color);
+    
+    display: flex;
+    align-items: center;
+  }
+  .user-item-light {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: larger;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 4px;
+    background-color: var(--color-background-light);
     display: flex;
     align-items: center;
   }
@@ -89,14 +124,29 @@
     transform: translate(2px, 2px);
   }
   
-  .pairs-list {
+  .pairs-list-dark {
+    margin: 10px;
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos salten a la siguiente fila si no hay más espacio */
     gap: 10px; /* Añade un espacio entre los elementos */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #f9f9f9;
+    background-color:var(--color-background-dark);
+    color: var(--color-background-light);
+    max-height: 200px; /* Limita la altura para evitar que se expanda mucho */
+    overflow-y: auto; /* Añade scroll si hay muchas combinaciones */
+    list-style: none; /* Eliminar puntos o viñetas */
+  }
+  .pairs-list-light {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos salten a la siguiente fila si no hay más espacio */
+    gap: 10px; /* Añade un espacio entre los elementos */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color:var(--color-background-light);
     max-height: 200px; /* Limita la altura para evitar que se expanda mucho */
     overflow-y: auto; /* Añade scroll si hay muchas combinaciones */
     list-style: none; /* Eliminar puntos o viñetas */
@@ -117,6 +167,3 @@
     margin: 0; /* Elimina el margen por defecto del párrafo */
     font-size: small; /* Ajusta el tamaño de la fuente si es necesario */
   }
-  
-
-  

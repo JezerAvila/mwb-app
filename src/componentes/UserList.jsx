@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './UserList.css'; // Asegúrate de importar el archivo CSS para los estilos
 import BotonSeleccionAleatoria from './BotonSeleccionAleatoria';
+import { useTheme } from './ThemeContext'; 
 
 const UserList = () => {
+
+  const { isDarkMode } = useTheme();
+
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState('');
   const [pairs, setPairs] = useState([]);  // Estado para las combinaciones
@@ -73,18 +77,18 @@ const UserList = () => {
     };
 
   return (
-    <div className="user-list-container">
+    <div className = {isDarkMode ? 'user-list-container-dark' : 'user-list-container-light'} >
       <input
         type="text"
         value={user}
         onChange={(e) => setUser(e.target.value)}
-        className="user-input" // Clase para el input
+        className = {isDarkMode? 'user-input-dark':'user-input-light'} // Clase para el input
         placeholder="Agregar publicador..."
       />
       <button onClick={addUser} className="add-button">Agregar</button>
       <ul className="users-list"> {/* Clase para la lista */}
         {users.map((user, index) => (
-          <li key={index} className="user-item"> {/* Clase para cada elemento de la lista */}
+          <li key={index} className = {isDarkMode? 'user-item-dark':'user-item-light'}> {/* Clase para cada elemento de la lista */}
             <span className="user-name">{user}</span> {/* Clase para el nombre */}
             <button onClick={() => removeUser(index)} className="remove-button">X</button>
           </li>
@@ -105,7 +109,7 @@ const UserList = () => {
       {/* Mostrar las combinaciones de parejas en un cuadro de texto */}
       {pairs.length > 0 ? (
         <div>
-          <div className="pairs-list"> 
+          <div className= {isDarkMode ? 'pairs-list-dark':'pairs-list-light'}> 
               {/* {JSON.stringify(pairs, null, 2)} */}
               {pairs.map((pair, index) => (
           <div

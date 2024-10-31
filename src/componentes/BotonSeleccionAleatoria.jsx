@@ -1,7 +1,7 @@
 import React,  { useState, useEffect } from 'react';
 import './BotonSeleccionAleatoria.css';
 import Swal from 'sweetalert2'; 
-
+import { useTheme } from './ThemeContext'; 
 
 
 export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, parejasUsadas }) {
@@ -9,6 +9,8 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
   const [mostrar, setMostrar] = useState(false);
   const [responsablesPrevios, setResponsablesPrevios] = useState([]); // Responsables de la selección anterior
   const [parejasInvertidas, setParejasInvertidas] = useState({}); // Estado para controlar si una pareja está invertida visualmente
+
+  const { isDarkMode } = useTheme(); //para el tema oscuro 
 
 
   // Recuperar las parejas y responsables usados al cargar la página
@@ -133,7 +135,7 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
       {mostrar && (
         <div>
           <h2 className='combinaciones__titulo'>Combinaciones Aleatorias</h2>
-          <ul className='combinaciones__lista'>
+          <ul className = {isDarkMode? 'combinaciones__lista-dark':'combinaciones__lista-light'}>
             {arrayNuevo.map((item, index) => (
               <li key={index} className={esParejaUsada(item) ? 'pareja-usada' : ''}>
                   {typeof item === 'string' ? (
@@ -147,7 +149,7 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
                           <span className="usuario2">
                             {parejasInvertidas[index] ? item[0] : item[1]}
                           </span>
-                          <button onClick={() => invertirPareja(index)}>
+                          <button className='botonInvertirOrden' onClick={() => invertirPareja(index)}>
                             Invertir Orden
                           </button>
                     </>

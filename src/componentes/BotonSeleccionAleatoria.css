@@ -16,6 +16,7 @@
   }
   
   .combinaciones__boton, .combinaciones__usar {
+    margin: 5px;
     padding: 8px 16px;
     background-color: var(--primary-color);
     color: white;
@@ -60,10 +61,12 @@
 
   .usuario1 {
     color: green; /* Verde para usuario1 */
+    margin-right: 8px; /* Espacio a la derecha de usuario1 */
   }
   
   .usuario2 {
     color:maroon; /* Naranja para usuario2 */
+    margin-left: 8px;  /* Espacio a la izquierda de usuario2 */
   }
 
   .pareja-usada {
@@ -71,3 +74,19 @@
     text-decoration: line-through;
   }
   
+  .botonInvertirOrden {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid #18181d;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 0 #000;
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .botonInvertirOrden:hover {
+    box-shadow: 1px 1px 0 0 #000;
+    transform: translate(2px, 2px);
+  }
