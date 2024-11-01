@@ -4,7 +4,7 @@ const Suggestions = () => {
   return (
     <div>
       <h1>Suggestions</h1>
-      <p>Support us by donating!</p>
+      <p>dejame tus comentarios</p>
     </div>
   );
 }

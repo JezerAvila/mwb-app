@@ -12,14 +12,34 @@
 
 
 nav {
-    background-color: #333;  /* Fondo oscuro para la barra */
-    padding: 0.5em;            /* Espaciado interno */
+    background-color: var(--fondo-darkmode);  /* Fondo oscuro para la barra */
+    padding: 0.5em 1em;            /* Espaciado interno */
     text-align: center;       /* Centra el contenido */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  /* Oculta el menú en pantallas pequeñas por defecto */
+.menu {
+  display: flex; /* Mostrar menú en pantallas grandes */
+  gap: var(--spacing);
+  }
+
+  /* Estilos del botón de menú "hamburguesa" */
+.menu-button {
+  display: none; /* Ocultar el botón en pantallas grandes */
+  background: none;
+  border: none;
+  color: var(--text-color-lightmode);
+  font-size: 1.8em;
+  cursor: pointer;
   }
   
   /* Estilo para los enlaces dentro de la barra de navegación */
   nav a {
-    color: white;            /* Color blanco para los enlaces */
+    color: var(--text-color-lightmode);            /* Color blanco para los enlaces */
     text-decoration: none;   /* Quitar subrayado */
     margin: 0 15px;          /* Espaciado horizontal entre los enlaces */
     font-size: 1.2em;        /* Tamaño de fuente ligeramente más grande */
@@ -34,37 +54,58 @@ nav {
   /* Separador entre los enlaces */
   nav a:not(:last-child):after {
     content: '|';           /* Separador de barra entre enlaces */
-    color: white;           /* Mantiene el color blanco */
+    color: var(--text-color-lightmode);           /* Mantiene el color blanco */
     margin-left: 15px;      /* Espaciado a la izquierda del separador */
   }
+
+
   
   /* Responsivo: hacer que la barra se ajuste en pantallas pequeñas */
   @media (max-width: 600px) {
-    nav {
-      padding: 0.5em;
+    .menu-button {
+      display: block; /* Mostrar el botón en pantallas pequeñas */
+      z-index: 1001; /* Asegura que el botón esté al frente */
     }
-  
-    nav a {
-      display: block;       /* Los enlaces ocupan toda la línea en pantallas pequeñas */
-      margin: 10px 0;       /* Espaciado vertical entre enlaces */
-    }
-  }
-  
 
-/*   .navbar-light {
-    background-color: white;
-    color: black;
-  }
-  
-  .navbar-dark {
-    background-color: var(--fondo-darkmode);
-    color: var(--text-color-darkmode);
-  }
-  
-  .toggle-theme-btn {
-    margin-left: 10px;
-    cursor: pointer;
-  } */
+    .menu {
+        display: none; /* Ocultar el menú en pantallas pequeñas */
+        flex-direction: column;
+        background-color: var(--fondo-darkmode);
+        position: absolute;
+        top: 50px; /* Asegura que se coloque justo debajo de la barra de navegación */
+        left: 10px;
+        width: 150px;
+        padding: 10px;
+        border-radius: 8px;
+        z-index: 1000; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden; /* Ocultar por defecto */
+    }
+
+    .menu.open {
+        display: flex; /* Mostrar el menú cuando esté abierto */
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible; /* Hacer visible cuando está abierto */
+    }
+
+    .menu a {
+        padding: 10px 20px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .menu a:hover {
+        color: var(--hover-color);
+    }
+
+    nav a:not(:last-child):after {
+      content: none; /* Quita el separador vertical en pantallas pequeñas */
+    }
+  } 
 
   /* The switch - the box around the slider */
 .switch {
