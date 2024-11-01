@@ -39,6 +39,12 @@ const UserList = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      addUser(); // Llama a addUser cuando se presiona "Enter"
+    }
+  };
+
   const removeUser = (index) => {
     const newUsers = users.filter((_, i) => i !== index);
     setUsers(newUsers);
@@ -84,6 +90,7 @@ const UserList = () => {
         onChange={(e) => setUser(e.target.value)}
         className = {isDarkMode? 'user-input-dark':'user-input-light'} // Clase para el input
         placeholder="Agregar publicador..."
+        onKeyDown={handleKeyDown} // Agrega el manejador de eventos para "Enter"
       />
       <button onClick={addUser} className="add-button">Agregar</button>
       <ul className="users-list"> {/* Clase para la lista */}
