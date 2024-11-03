@@ -66,7 +66,7 @@ const Home = () => {
       <div className= "home-container">
           <img
           className="oso"
-          src={isDarkMode ? '/BearIconDark.png' : '/BearIcon.png'}
+          src={isDarkMode ? `${process.env.PUBLIC_URL}/BearIconDark.png` :`${process.env.PUBLIC_URL}/BearIcon.png`}
           alt="icono"
           />
         <div className={`dialogoOso ${isTypingComplete ? 'show-button' : ''}`}>

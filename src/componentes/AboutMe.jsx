@@ -13,7 +13,7 @@ const AboutMe = () => {
       <GlobalStyle isDarkMode={isDarkMode} />
       <AboutMeContainer isDarkMode={isDarkMode}>
         <Title isDarkMode={isDarkMode}>Howdy!</Title>
-        <Image src="/aboutmeimg.png" alt="foto del creador de la pagina" />
+        <Image src= {`${process.env.PUBLIC_URL}/aboutmeimg.png`} alt="foto del creador de la pagina" />
         <Paragraph>
           Thank you so much for getting here! I'm Jezer, creator and maintainer of mwb-app. 
           I'd really love to get in touch with you to hear your feedback or just say hello! 😀
