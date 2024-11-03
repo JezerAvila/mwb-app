@@ -2,7 +2,7 @@
   "name": "mwb-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://JezerAvila.github.io/mwb-app/build",
+  "homepage": "https://jezeravila.github.io/mwb-app",
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
