@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/mwb-scheduler/build/static/css/main.3e4af3a2.css",
-    "main.js": "/mwb-scheduler/build/static/js/main.13e61bae.js",
-    "static/media/logo.svg": "/mwb-scheduler/build/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/mwb-scheduler/build/index.html",
-    "main.3e4af3a2.css.map": "/mwb-scheduler/build/static/css/main.3e4af3a2.css.map",
-    "main.13e61bae.js.map": "/mwb-scheduler/build/static/js/main.13e61bae.js.map"
+    "main.css": "/mwb-app/build/static/css/main.3e4af3a2.css",
+    "main.js": "/mwb-app/build/static/js/main.f3cd4965.js",
+    "static/media/logo.svg": "/mwb-app/build/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/mwb-app/build/index.html",
+    "main.3e4af3a2.css.map": "/mwb-app/build/static/css/main.3e4af3a2.css.map",
+    "main.f3cd4965.js.map": "/mwb-app/build/static/js/main.f3cd4965.js.map"
   },
   "entrypoints": [
     "static/css/main.3e4af3a2.css",
-    "static/js/main.13e61bae.js"
+    "static/js/main.f3cd4965.js"
   ]
 }
