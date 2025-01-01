@@ -56,27 +56,57 @@ export default function BotonSeleccionAleatoria ({ users, pairs, onUsarParejas, 
   };
 
 
-  const UsarParejas = () => {
+  // const UsarParejas = () => {
   
+  //   const parejasUsadasPrevias = JSON.parse(localStorage.getItem('parejasUsadas')) || [];
+  //   const nuevasParejasUsadas = [...parejasUsadasPrevias, ...arrayNuevo];
+  
+  //   // Guardar las nuevas parejas usadas en el localStorage
+  //   localStorage.setItem('parejasUsadas', JSON.stringify(nuevasParejasUsadas));
+
+  //   // Determinar responsables según las parejas seleccionadas (teniendo en cuenta la inversión visual)
+  //   const nuevosResponsables = arrayNuevo.map((pareja, index) =>
+  //     parejasInvertidas[index] ? pareja[1] : pareja[0] // Tomar al primer miembro de la pareja, o al segundo si está invertido
+  //   );
+
+  //   // Solo almacenar los responsables de la última selección
+  //   setResponsablesPrevios(nuevosResponsables);
+  
+  //   localStorage.setItem('responsablesPrevios', JSON.stringify(nuevosResponsables));
+
+  //   onUsarParejas(arrayNuevo);  // Notificar al componente padre
+  //   setArrayNuevo([]);  // Limpiar el array de parejas seleccionadas
+  // };
+
+  const UsarParejas = () => {
     const parejasUsadasPrevias = JSON.parse(localStorage.getItem('parejasUsadas')) || [];
     const nuevasParejasUsadas = [...parejasUsadasPrevias, ...arrayNuevo];
   
     // Guardar las nuevas parejas usadas en el localStorage
     localStorage.setItem('parejasUsadas', JSON.stringify(nuevasParejasUsadas));
-
+  
     // Determinar responsables según las parejas seleccionadas (teniendo en cuenta la inversión visual)
-    const nuevosResponsables = arrayNuevo.map((pareja, index) =>
-      parejasInvertidas[index] ? pareja[1] : pareja[0] // Tomar al primer miembro de la pareja, o al segundo si está invertido
-    );
+    const nuevosResponsables = arrayNuevo.map((pareja, index) => {
+      if (typeof pareja === 'string') {
+        // Caso especial para los usuarios que faltaron
+        const usuarioFaltante = pareja.replace('Faltó: ', '').trim();
+        return `Faltó-${usuarioFaltante}`; // Agregamos el prefijo con un guion para consistencia
+      }
+      // Si no es un string, seguimos con la lógica normal de parejas
+      return parejasInvertidas[index] ? pareja[1] : pareja[0];
+    });
 
+  
     // Solo almacenar los responsables de la última selección
     setResponsablesPrevios(nuevosResponsables);
   
+    // Guardar responsables previos en el localStorage
     localStorage.setItem('responsablesPrevios', JSON.stringify(nuevosResponsables));
-
-    onUsarParejas(arrayNuevo);  // Notificar al componente padre
-    setArrayNuevo([]);  // Limpiar el array de parejas seleccionadas
+  
+    onUsarParejas(arrayNuevo); // Notificar al componente padre
+    setArrayNuevo([]); // Limpiar el array de parejas seleccionadas
   };
+  
 
 
   const esParejaUsada = (pareja) => {

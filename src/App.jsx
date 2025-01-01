@@ -9,9 +9,8 @@ import { ThemeProvider } from './componentes/ThemeContext';
 
 function App() {
   return (
-    <BrowserRouter basename='/mwb-app'>   
       <ThemeProvider>
-        <Router>
+        <Router basename='/mwb-app'>
           <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
@@ -20,7 +19,6 @@ function App() {
             </Routes>
         </Router>
       </ThemeProvider>
-    </BrowserRouter>
   );
 }
 
