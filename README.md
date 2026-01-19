@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Assignment Generator – Vida y Ministerio Cristianos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicación web desarrollada con **React** para facilitar la creación y gestión de asignaciones en la reunión **Vida y Ministerio Cristianos**.  
+El objetivo del proyecto es automatizar la selección de parejas, evitando repeticiones y permitiendo una rotación justa y organizada.
 
-## Available Scripts
+## 🚀 Demo en vivo
 
-In the project directory, you can run:
+La aplicación está publicada en **GitHub Pages**, por lo que puede usarse directamente desde el navegador sin instalación:
 
-### `npm start`
+👉 [Ver aplicación en vivo](https://jezeravila.github.io/mwb-app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🧩 ¿Qué hace la aplicación?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Permite **crear y administrar una lista de personas**
+- Genera **todas las combinaciones posibles de parejas** a partir de la lista
+- Selecciona parejas de forma **aleatoria**
+- Permite **marcar parejas como usadas**, evitando repeticiones en rondas futuras
+- Continúa usando nuevas combinaciones hasta agotar todas las opciones posibles
+- Muestra las **últimas personas responsables seleccionadas** para facilitar la rotación
+- Permite **agregar o eliminar personas**, actualizando automáticamente las combinaciones
+- Incluye una **guía interactiva** (un oso en la esquina superior derecha) que explica cómo usar la aplicación paso a paso
 
-### `npm test`
+## 💾 Persistencia de datos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Los datos se guardan en la **memoria del navegador (cache / localStorage)**
+- No requiere base de datos ni almacenamiento en la nube
+- La información se conserva al recargar la página o cerrar el navegador
+- Esto tambien es util en el caso de proteccion de datos
+- Y la aplicacion permite borrar estos datos especificos de la memoria del navegador para volver a empezar de cero
 
-### `npm run build`
+## 🛠 Tecnologías utilizadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React**
+- **JavaScript**
+- **HTML**
+- **CSS**
+- **LocalStorage (Web Storage API)**
+- **GitHub Pages** para despliegue
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🎯 Funcionalidades principales
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Gestión dinámica de usuarios
+- Generación automática de combinaciones sin modificar el orden original
+- Selección aleatoria sin repetir personas ni parejas
+- Actualización inmediata al cambiar la lista de participantes
+- Interfaz responsiva y fácil de usar
 
-### `npm run eject`
+## 📌 Objetivo del proyecto
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Este proyecto fue desarrollado como práctica personal para:
+- Aplicar lógica de negocio en **React**
+- Manejar estado y persistencia sin backend
+- Resolver un problema real de organización
+- Mejorar habilidades en **JavaScript, React y diseño de flujos**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Además, demuestra cómo una aplicación frontend puede ser funcional y útil sin depender de servicios externos.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
